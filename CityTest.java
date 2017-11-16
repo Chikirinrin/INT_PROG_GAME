@@ -12,6 +12,7 @@ public class CityTest {
     public void setUp() throws Exception {
         game = new Game();
         country1 = new Country("country1", null);
+        country1.setGame(game);
         cityA = new City("cityA", 80, country1);
         cityB = new City("cityB", 70, country1);
         cityC = new City("cityC", 10, country1);
@@ -48,11 +49,11 @@ public class CityTest {
     public void arrive() throws Exception {
         for(int i = 0; i<1000 ; i++){       // Try different seeds
             game.getRandom().setSeed(i);    // Set seed
-            int bonus = country1.bonus(70); // Remember bonus
+            int bonus = country1.bonus(80); // Remember bonus
             game.getRandom().setSeed(i);    // Reset seed
             int arrive = cityA.arrive();    // Same bonus
             assertEquals(arrive, bonus);
-            assertEquals(cityA.getValue(), cityA.getInitialValue()-bonus);
+            assertEquals(cityA.getValue(), 80-bonus);
             cityA.reset();
         }
 
