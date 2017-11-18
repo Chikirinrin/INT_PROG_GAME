@@ -18,11 +18,10 @@ public class PositionTest {
 
     @Test
     public void Position(){
-        Position pos1 = new Position(cityA, cityB, 3);
-        assertEquals(pos1.getFrom(), cityA);
-        assertEquals(pos1.getTo(),cityB);
-        assertEquals(pos1.getDistance(),3);
-        assertEquals(pos1.getTotal(), 3);
+        assertEquals(pos.getFrom(), cityA);
+        assertEquals(pos.getTo(),cityB);
+        assertEquals(pos.getDistance(),3);
+        assertEquals(pos.getTotal(), 3);
     }
 
     @Test
@@ -37,14 +36,13 @@ public class PositionTest {
     @Test
     public void move() throws Exception {
 
-            assertEquals(pos.getDistance(),3);
+        for(int i = 3; i>0; i--){
+            assertEquals(pos.getDistance(),i);
             assertTrue(pos.move());
-            assertEquals(pos.getDistance(),2);
-            assertTrue(pos.move());
-            assertEquals(pos.getDistance(),1);
-            assertTrue(pos.move());
+        }
             assertEquals(pos.getDistance(),0);
             assertFalse(pos.move());
+
     }
 
     @Test

@@ -48,7 +48,7 @@ public class Position
     // Returværdien angiver om distance ændres.
     public boolean move(){
         if(distance > 0){
-            distance = distance - 1;
+            distance--;
             return true;
         }
         return false;
