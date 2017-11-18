@@ -1,15 +1,20 @@
 import org.junit.Test;
 import org.junit.Before;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class RoadTest {
     private Country country1, country2;
     private City cityA, cityB, cityC;
-
+    private Map<City, List<Road>> network1;
     @Before
     public void setUp() {
-        country1 = new Country("country 1",null);
+        network1 = new HashMap<>();
+        country1 = new Country("country 1",network1);
         cityA = new City("CityA",80, country1);
         cityB = new City("CityB",70, country1);
         cityC = new City("CityC", 10, country1);
@@ -22,6 +27,7 @@ public class RoadTest {
         Road road = new Road(cityA, cityB,4);
         assertEquals(road.getFrom(), cityA);
         assertEquals(road.getTo(), cityB);
+        assertEquals(road.getLength(),4);
     }
 
     @Test

@@ -68,6 +68,13 @@ public class CountryTest {
     }
 
     @Test
+    public void Country(){
+        Country coun1 = new Country("coun1", network1);
+        assertEquals(coun1.getName(),"coun1");
+        assertEquals(coun1.getNetwork(), network1);
+    }
+
+    @Test
     public void reset(){
         cityA.arrive();
         cityA.arrive();
@@ -102,23 +109,23 @@ public class CountryTest {
 
     @Test
     public void addRoads() throws Exception {
-        List<Road> networkNew = network1.get(cityA);
+        List<Road> roads = network1.get(cityA);
 
         //tester når begge byer ligger i samme land.
-        networkNew.add(new Road(cityA, cityB, 4));
-        networkNew.add(new Road(cityB, cityA,4));
+        roads.add(new Road(cityA, cityB, 4));
+        roads.add(new Road(cityB, cityA,4));
         country1.addRoads(cityA, cityB, 4);
-        assertEquals(network1.get(cityA), networkNew);
+        assertEquals(network1.get(cityA), roads);
 
         //tester når en by ligger i det ene land og den anden by i
         //et andet land.
-        networkNew.add(new Road(cityA, cityF,3));
+        roads.add(new Road(cityA, cityF,3));
         country1.addRoads(cityA, cityF, 3);
-        assertEquals(network1.get(cityA), networkNew);
+        assertEquals(network1.get(cityA), roads);
 
         //tester når begge byer ikke er i landet.
         country1.addRoads(cityE,cityF,2);
-        assertEquals(network1.get(cityA), networkNew);
+        assertEquals(network1.get(cityA), roads);
     }
 
     @Test

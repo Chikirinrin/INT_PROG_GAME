@@ -19,6 +19,24 @@ public class CityTest {
     }
 
     @Test
+    public void City(){
+        City cityD = new City("cityD", 50, country1);
+        assertEquals(cityD.getValue(),50);
+        assertEquals(cityD.getCountry(), country1);
+        assertEquals(cityD.getName(), "cityD");
+    }
+
+    @Test
+    public void changeValue(){
+        assertEquals(cityA.getInitialValue(), 80);
+        cityA.changeValue(50);
+        assertEquals(cityA.getValue(), 130);
+        assertEquals(cityB.getInitialValue(),70);
+        cityB.changeValue(-80);
+        assertEquals(cityB.getValue(),-10);
+    }
+
+    @Test
     public void reset() throws Exception {
         cityA.changeValue(80);
         assertEquals(cityA.getValue(),160);

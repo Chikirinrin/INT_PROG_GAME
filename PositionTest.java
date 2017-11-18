@@ -18,12 +18,12 @@ public class PositionTest {
 
     @Test
     public void Position(){
-        assertEquals(pos.getFrom(), cityA);
-        assertEquals(pos.getTo(),cityB);
-        assertEquals(pos.getDistance(),3);
-        assertEquals(pos.getTotal(), 3);
+        Position pos1 = new Position(cityA, cityB, 3);
+        assertEquals(pos1.getFrom(), cityA);
+        assertEquals(pos1.getTo(),cityB);
+        assertEquals(pos1.getDistance(),3);
+        assertEquals(pos1.getTotal(), 3);
     }
-
 
     @Test
     public void hasArrived() throws Exception {
