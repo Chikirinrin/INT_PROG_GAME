@@ -26,7 +26,7 @@ public class PositionTest {
 
     @Test
     public void hasArrived() throws Exception {
-       for(int i=0; i<3; i++){
+       for(int i=pos.getDistance(); i>0; i--){
            assertFalse(pos.hasArrived());
            pos.move();
        }
@@ -51,13 +51,22 @@ public class PositionTest {
         pos.turnAround();
         assertEquals(pos.getFrom(),cityB);
         assertEquals(pos.getTo(), cityA);
+        assertEquals(pos.getDistance(), 1);
+        assertEquals(pos.getTotal(),3);
+
         pos.move();
         pos.turnAround();
         assertEquals(pos.getFrom(), cityA);
         assertEquals(pos.getTo(),cityB);
+        assertEquals(pos.getDistance(), 3);
+        assertEquals(pos.getTotal(),3);
+        
         pos.turnAround();
+
         assertEquals(pos.getFrom(),cityB);
         assertEquals(pos.getTo(),cityA);
+        assertEquals(pos.getDistance(), 0);
+        assertEquals(pos.getTotal(),3);
     }
 
 }
