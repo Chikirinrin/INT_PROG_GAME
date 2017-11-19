@@ -1,7 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,7 @@ import static org.junit.Assert.*;
 public class CityTest {
     private Game game;
     private Country country1, country2;
-    private City cityA, cityB, cityC, cityD, cityE, cityF, cityG;
+    private City cityA, cityB, cityC, cityD;
 
     @Before
     public void setUp() throws Exception {
@@ -31,9 +30,6 @@ public class CityTest {
         cityB = new City("City B", 60, country1);
         cityC = new City("City C", 40, country1);
         cityD = new City("City D", 100, country1);
-        cityE = new City("City E", 50, country2);
-        cityF = new City("City F", 90, country2);
-        cityG = new City("City G", 70, country2);
     }
 
     @Test

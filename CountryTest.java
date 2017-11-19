@@ -69,9 +69,9 @@ public class CountryTest {
 
     @Test
     public void Country(){
-        Country coun1 = new Country("coun1", network1);
-        assertEquals(coun1.getName(),"coun1");
-        assertEquals(coun1.getNetwork(), network1);
+        Country country1 = new Country("country1", network1);
+        assertEquals(country1.getName(),"country1");
+        assertEquals(country1.getNetwork(), network1);
     }
 
     @Test
@@ -79,10 +79,19 @@ public class CountryTest {
         cityA.arrive();
         cityA.arrive();
         cityA.arrive();
+        cityB.arrive();
+        cityB.arrive();
+        cityB.arrive();
+        cityC.arrive();
+        cityC.arrive();
+        cityC.arrive();
+        cityD.arrive();
+        cityD.arrive();
+        cityD.arrive();
         cityE.arrive();
         cityE.arrive();
         cityE.arrive();
-        int valueE = cityE.getValue();  // remember value of cityB.
+        int valueE = cityE.getValue();  // remember value of cityE.
         country1.reset();
         assertEquals(cityA.getValue(),80); // cityA is reset.
         assertEquals(cityE.getValue(), valueE); // cityB is reset.
@@ -93,18 +102,27 @@ public class CountryTest {
         for(int seed = 0; seed < 1000; seed++){ //Try 1000 different seeds
             game.getRandom().setSeed(seed);
             int sum = 0;
+            int sum1 = 0;
             Set<Integer> values = new HashSet<>();
+            Set<Integer> values1 = new HashSet<>();
                     for(int i = 0; i<10000; i++){ // Call method 10000 times
                         int bonus = country1.bonus(80);
                         assertTrue( 0<= bonus && bonus <= 80 );
                         sum += bonus;
                         values.add(bonus);
+                        assertEquals(country1.bonus(0),0);
+                    }
+                    for(int i = 0; i<10000; i++){
+                        int bonus1 = country2.bonus(1);
+                        assertTrue(0<=bonus1 && bonus1 <= 1);
+                        sum1 += bonus1;
+                        values1.add(bonus1);
                     }
             assertTrue(375000 < sum && sum < 425000);
+            assertTrue(4000 < sum1 && sum1 < 6000);
             assertEquals(values.size(), 81);
+            assertEquals(values1.size(),2);
         }
-        assertEquals(country1.bonus(0),0);
-        assertEquals(country1.bonus(1),1);
     }
 
     @Test
@@ -140,7 +158,7 @@ public class CountryTest {
         assertEquals(country1.readyToTravel(cityA,cityD).getFrom(), cityA);
         assertEquals(country1.readyToTravel(cityA,cityD).getTo(), cityD);
         assertEquals(country1.readyToTravel(cityA,cityA).getFrom(), cityA);
-        assertEquals(country1.readyToTravel(cityC, cityA).getTo(),cityC);
+        assertEquals(country1.readyToTravel(cityC,cityA).getTo(),cityC);
 
     }
 
