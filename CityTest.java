@@ -34,37 +34,6 @@ public class CityTest {
         cityE = new City("City E", 50, country2);
         cityF = new City("City F", 90, country2);
         cityG = new City("City G", 70, country2);
-
-        // Create road lists
-        List<Road> roadsA = new ArrayList<Road>(),
-                roadsB = new ArrayList<>(),
-                roadsC = new ArrayList<>(),
-                roadsD = new ArrayList<>(),
-                roadsE = new ArrayList<>(),
-                roadsF = new ArrayList<>(),
-                roadsG = new ArrayList<>();
-
-        network1.put(cityA, roadsA);
-        network1.put(cityB, roadsB);
-        network1.put(cityC, roadsC);
-        network1.put(cityD, roadsD);
-        network2.put(cityE, roadsE);
-        network2.put(cityF, roadsF);
-        network2.put(cityG, roadsG);
-
-        // Create roads
-        country1.addRoads(cityA, cityB, 4);
-        country1.addRoads(cityA, cityC, 3);
-        country1.addRoads(cityA, cityD, 5);
-        country1.addRoads(cityB, cityD, 2);
-        country1.addRoads(cityC, cityD, 2);
-        country1.addRoads(cityC, cityE, 4);
-        country1.addRoads(cityD, cityF, 3);
-        country2.addRoads(cityE, cityC, 4);
-        country2.addRoads(cityE, cityF, 2);
-        country2.addRoads(cityE, cityG, 5);
-        country2.addRoads(cityF, cityD, 3);
-        country2.addRoads(cityF, cityG, 6);
     }
 
     @Test
@@ -72,6 +41,7 @@ public class CityTest {
         assertEquals(cityD.getValue(),100);
         assertEquals(cityD.getCountry(), country1);
         assertEquals(cityD.getName(), "City D");
+        assertEquals(cityD.getInitialValue(),100);
     }
 
     @Test
@@ -79,6 +49,7 @@ public class CityTest {
         assertEquals(cityA.getInitialValue(), 80);
         cityA.changeValue(50);
         assertEquals(cityA.getValue(), 130);
+        assertEquals(cityA.getInitialValue(),80);
         assertEquals(cityB.getInitialValue(),60);
         cityB.changeValue(-80);
         assertEquals(cityB.getValue(),-20);
@@ -95,11 +66,6 @@ public class CityTest {
         assertEquals(cityA.getValue(), cityA.getInitialValue()-90);
         cityA.reset();
         assertEquals(cityA.getValue(),cityA.getInitialValue());
-
-        cityA.changeValue(-0);
-        assertEquals(cityA.getValue(),cityA.getValue()-0);
-        cityA.reset();
-        assertEquals(cityA.getValue(),cityA.getInitialValue());
     }
 
     @Test
@@ -109,7 +75,8 @@ public class CityTest {
         assertTrue(cityB.compareTo(cityC) < 0);
         assertTrue(cityC.compareTo(cityA) > 0);
         assertTrue(cityB.compareTo(cityA) > 0);
-        assertTrue(cityA.compareTo(cityA) == 0);
+        assertTrue(cityC.compareTo(cityB) > 0);
+        assertEquals(cityA.compareTo(cityA), 0);
 
     }
 

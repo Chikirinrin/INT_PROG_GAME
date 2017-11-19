@@ -24,7 +24,9 @@ public class RoadTest {
 
     @Test
     public void Road(){
+        country1 = new Country("country 1",network1);
         Road road = new Road(cityA, cityB,4);
+        assertEquals(country1.getNetwork(), network1);
         assertEquals(road.getFrom(), cityA);
         assertEquals(road.getTo(), cityB);
         assertEquals(road.getLength(),4);
@@ -40,7 +42,7 @@ public class RoadTest {
         assertTrue(road3.compareTo(road2) > 0);
         assertTrue(road3.compareTo(road1) > 0);
         assertTrue(road2.compareTo(road1) > 0);
-        assertTrue(road2.compareTo(road3)<0);
+        assertTrue(road2.compareTo(road3) < 0);
         assertEquals(road1.compareTo(road1), 0);
     }
 
