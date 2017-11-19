@@ -79,15 +79,7 @@ public class CountryTest {
         cityA.arrive();
         cityA.arrive();
         cityA.arrive();
-        cityB.arrive();
-        cityB.arrive();
-        cityB.arrive();
-        cityC.arrive();
-        cityC.arrive();
-        cityC.arrive();
-        cityD.arrive();
-        cityD.arrive();
-        cityD.arrive();
+
         cityE.arrive();
         cityE.arrive();
         cityE.arrive();
